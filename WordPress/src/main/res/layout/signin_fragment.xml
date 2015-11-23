@@ -173,17 +173,23 @@
                     android:maxLength="8" />
             </RelativeLayout>
 
+            <!--<LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="5dp"
+                android:layout_weight="1" />-->
+
             <RelativeLayout
                 android:id="@+id/url_button_layout"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:animateLayoutChanges="true"
                 android:background="@color/white"
-                android:visibility="gone">
+                android:layout_marginTop="5dp">
+                <!--android:visibility="gone">-->
 
                 <org.wordpress.android.widgets.OpenSansEditText
                     android:id="@+id/nux_url"
-                    style="@style/WordPress.NUXEditText"
+                    style="@style/WordPress.NUXEditText.Optional"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/site_address"
@@ -200,8 +206,45 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginLeft="10dp"
                     android:src="@drawable/dashicon_admin_site"
+                    android:tint="@color/gray" />
+
+                <ImageView
+                    android:id="@+id/url_help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/dashicon_info"
                     android:tint="@color/grey_darken_10" />
+
+                <!--Adding new tooltip button for self-hosted URL text field-->
+                <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="@dimen/activity_vertical_margin"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"
+                    android:paddingRight="@dimen/activity_horizontal_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    tools:context="com.androidsrc.popupwindow.MainActivity" >
+
+                    <Button
+                        android:id="@+id/anchor_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:onClick="onClick"
+                        android:text="Click me to see tooltip" />
+
+                </RelativeLayout>
+                -->
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/nux_button_height"
@@ -294,7 +337,7 @@
             android:orientation="vertical"
             app:maxWidth="@dimen/nux_width">
 
-            <org.wordpress.android.widgets.WPTextView
+            <!--<org.wordpress.android.widgets.WPTextView
                 android:id="@+id/nux_add_selfhosted_button"
                 style="@style/WordPress.NUXWhiteButtonNoBg"
                 android:layout_width="wrap_content"
@@ -308,7 +351,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1" />-->
 
             <org.wordpress.android.widgets.WPTextView
                 android:id="@+id/nux_create_account_button"

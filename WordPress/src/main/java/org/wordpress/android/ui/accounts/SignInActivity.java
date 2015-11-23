@@ -50,13 +50,14 @@ public class SignInActivity extends Activity {
                 mSignInFragment.showAuthErrorMessage();
             }
         }
-        switch (actionMode) {
+        // TODO : Remove ADD_SELF_HOSTED_BLOG from actionMode.
+        /*switch (actionMode) {
             case ADD_SELF_HOSTED_BLOG:
                 mSignInFragment.forceSelfHostedMode();
                 break;
             default:
                 break;
-        }
+        }*/
 
 
     }

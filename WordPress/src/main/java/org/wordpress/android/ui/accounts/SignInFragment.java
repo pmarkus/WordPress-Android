@@ -84,7 +84,7 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
 
     private WPTextView mSignInButton;
     private WPTextView mCreateAccountButton;
-    private WPTextView mAddSelfHostedButton;
+    //private WPTextView mAddSelfHostedButton;
     private WPTextView mProgressTextSignIn;
     private WPTextView mForgotPassword;
     private WPTextView mJetpackAuthLabel;
@@ -99,6 +99,7 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
 
     private ImageView mInfoButton;
     private ImageView mInfoButtonSecondary;
+    private ImageView mURLHelpButton;
 
     private final EmailChecker mEmailChecker;
 
@@ -142,7 +143,7 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
         mProgressTextSignIn = (WPTextView) rootView.findViewById(R.id.nux_sign_in_progress_text);
         mCreateAccountButton = (WPTextView) rootView.findViewById(R.id.nux_create_account_button);
         mCreateAccountButton.setOnClickListener(mCreateAccountListener);
-        mAddSelfHostedButton = (WPTextView) rootView.findViewById(R.id.nux_add_selfhosted_button);
+        /*mAddSelfHostedButton = (WPTextView) rootView.findViewById(R.id.nux_add_selfhosted_button);
         mAddSelfHostedButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +157,7 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
                     mSelfHosted = true;
                 }
             }
-        });
+        });*/
 
         mForgotPassword = (WPTextView) rootView.findViewById(R.id.forgot_password);
         mForgotPassword.setOnClickListener(mForgotPasswordListener);
@@ -198,6 +199,7 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
         mBottomButtonsLayout = (LinearLayout) rootView.findViewById(R.id.nux_bottom_buttons);
         initPasswordVisibilityButton(rootView, mPasswordEditText);
         initInfoButtons(rootView);
+        initURLHelpButton(rootView);
         moveBottomButtons();
 
         return rootView;
@@ -217,12 +219,12 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
      * Hide toggle button "add self hosted / sign in with WordPress.com" and show self hosted URL
      * edit box
      */
-    public void forceSelfHostedMode() {
+    /*public void forceSelfHostedMode() {
         mUrlButtonLayout.setVisibility(View.VISIBLE);
         mAddSelfHostedButton.setVisibility(View.GONE);
         mCreateAccountButton.setVisibility(View.GONE);
         mSelfHosted = true;
-    }
+    }*/
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -246,6 +248,24 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
         mInfoButtonSecondary = (ImageView) rootView.findViewById(R.id.info_button_secondary);
         mInfoButton.setOnClickListener(infoButtonListener);
         mInfoButtonSecondary.setOnClickListener(infoButtonListener);
+    }
+
+    private void initURLHelpButton(View rootView) {
+        OnClickListener urlHelpButtonListener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
+                // Used to pass data to an eventual support service
+                //intent.putExtra(ENTERED_URL_KEY, EditTextUtils.getText(mUrlEditText));
+                //intent.putExtra(ENTERED_USERNAME_KEY, EditTextUtils.getText(mUsernameEditText));
+                intent.putExtra(HelpshiftHelper.ORIGIN_KEY, Tag.ORIGIN_LOGIN_SCREEN_HELP);
+                startActivity(intent);
+            }
+        };
+        mURLHelpButton = (ImageView) rootView.findViewById(R.id.url_help);
+        //mInfoButtonSecondary = (ImageView) rootView.findViewById(R.id.info_button_secondary);
+        mURLHelpButton.setOnClickListener(urlHelpButtonListener);
+        //mInfoButtonSecondary.setOnClickListener(urlHelpButtonListener);
     }
 
     private void setSecondaryButtonVisible(boolean visible) {
@@ -315,9 +335,16 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
             mJetpackAuthLabel.setText(customAuthMessage);
         }
 
-        if (mAddSelfHostedButton != null) {
+        // TODO: Identify use of mAddSelfHostedButton here.
+        /*if (mAddSelfHostedButton != null) {
             mJetpackAuthLabel.setVisibility(View.VISIBLE);
             mAddSelfHostedButton.setVisibility(View.GONE);
+            mCreateAccountButton.setVisibility(View.GONE);
+            mUsernameEditText.setText("");
+        }*/
+        // TODO: Our own implementation until above todo is resolved
+        if (true) {
+            mJetpackAuthLabel.setVisibility(View.VISIBLE);
             mCreateAccountButton.setVisibility(View.GONE);
             mUsernameEditText.setText("");
         }
@@ -508,6 +535,9 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
         mUsernameLayout.setAlpha(isVisible ? 0.6f : 1.0f);
         mPasswordEditText.setFocusableInTouchMode(!isVisible);
         mPasswordLayout.setAlpha(isVisible ? 0.6f : 1.0f);
+        // TODO: See if these two lines should be added here or not
+        /*mUrlButtonLayout.setFocusableInTouchMode(!isVisible);
+        mUrlEditText.setAlpha(isVisible ? 0.6f : 1.0f);*/
 
         if (isVisible) {
             mTwoStepEditText.requestFocus();
@@ -713,7 +743,7 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
         mPasswordEditText.setEnabled(false);
         mTwoStepEditText.setEnabled(false);
         mUrlEditText.setEnabled(false);
-        mAddSelfHostedButton.setEnabled(false);
+        //mAddSelfHostedButton.setEnabled(false);
         mCreateAccountButton.setEnabled(false);
         mForgotPassword.setEnabled(false);
     }
@@ -726,7 +756,7 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
         mPasswordEditText.setEnabled(true);
         mTwoStepEditText.setEnabled(true);
         mUrlEditText.setEnabled(true);
-        mAddSelfHostedButton.setEnabled(true);
+        //mAddSelfHostedButton.setEnabled(true);
         mCreateAccountButton.setEnabled(true);
         mForgotPassword.setEnabled(true);
     }
