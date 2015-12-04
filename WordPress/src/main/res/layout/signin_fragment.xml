@@ -219,7 +219,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginRight="16dp"
                     android:src="@drawable/dashicon_info"
-                    android:tint="@color/grey_darken_10" />
+                    android:tint="@color/gray" />
 
                 <!--Adding new tooltip button for self-hosted URL text field-->
                 <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"

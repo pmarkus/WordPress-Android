@@ -53,6 +53,8 @@ import org.wordpress.android.util.EditTextUtils;
 import org.wordpress.android.util.GenericCallback;
 import org.wordpress.android.util.HelpshiftHelper;
 import org.wordpress.android.util.HelpshiftHelper.Tag;
+import org.wordpress.android.util.URLHelpshiftHelper;
+import org.wordpress.android.util.URLHelpshiftHelper.URLTag;
 import org.wordpress.android.util.NetworkUtils;
 import org.wordpress.android.util.StringUtils;
 import org.wordpress.android.util.ToastUtils;
@@ -254,11 +256,11 @@ public class SignInFragment extends AbstractFragment implements TextWatcher {
         OnClickListener urlHelpButtonListener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), HelpActivity.class);
+                Intent intent = new Intent(getActivity(), URLHelpActivity.class);
                 // Used to pass data to an eventual support service
                 //intent.putExtra(ENTERED_URL_KEY, EditTextUtils.getText(mUrlEditText));
                 //intent.putExtra(ENTERED_USERNAME_KEY, EditTextUtils.getText(mUsernameEditText));
-                intent.putExtra(HelpshiftHelper.ORIGIN_KEY, Tag.ORIGIN_LOGIN_SCREEN_HELP);
+                intent.putExtra(URLHelpshiftHelper.ORIGIN_KEY, URLTag.ORIGIN_LOGIN_SCREEN_HELP);
                 startActivity(intent);
             }
         };
